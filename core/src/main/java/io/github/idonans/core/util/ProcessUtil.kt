@@ -54,18 +54,14 @@ object ProcessUtil {
     fun getCurrentProcessNameByActivityThread(): String? {
         var processName: String? = null
         try {
-            val declaredMethod =
-                Class.forName(
-                    "android.app.ActivityThread",
-                    false,
-                    Application::class.java.classLoader
-                )
-                    .getDeclaredMethod(
-                        "currentProcessName",
-                        *arrayOfNulls<Class<*>?>(0)
-                    )
-            declaredMethod.isAccessible = true
-            val invoke = declaredMethod.invoke(null, arrayOfNulls<Any>(0))
+            val atClz = Class.forName(
+                "android.app.ActivityThread",
+                false,
+                Application::class.java.classLoader
+            )
+            val method = atClz.getDeclaredMethod("currentProcessName")
+            method.isAccessible = true
+            val invoke = method.invoke(atClz)
             if (invoke is String) {
                 processName = invoke
             }
