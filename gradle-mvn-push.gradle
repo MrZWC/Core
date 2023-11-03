@@ -32,8 +32,9 @@ afterEvaluate { project ->
 
                 if (POM_INCLUDE_SRC.toBoolean()) {
                     artifact sourcesJar
+                } else {
+                    artifact javadocsJar
                 }
-                artifact javadocsJar
 
                 pom {
                     name = POM_NAME
@@ -69,9 +70,9 @@ afterEvaluate { project ->
             maven {
                 name = "maven central"
                 if (rootProject.ext.bcfg.ver.versionName.endsWith("-SNAPSHOT")) {
-                    url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                    url = "https://oss.sonatype.org/content/repositories/snapshots/"
                 } else {
-                    url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
                 }
                 credentials {
                     username getRepositoryUsername()

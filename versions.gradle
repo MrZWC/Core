@@ -6,7 +6,7 @@ bcfg.ver = [:]
 bcfg.ver.min_sdk = 21
 bcfg.ver.target_sdk = 31
 bcfg.ver.versionCode = ext.createGitVersionCode()
-bcfg.ver.versionName = ext.createGitVersionName()
+bcfg.ver.versionName = "2.0.18"
 
 bcfg.deps = [:]
 bcfg.deps.android_gradle_plugin = "com.android.tools.build:gradle:7.0.3"
