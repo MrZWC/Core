@@ -27,11 +27,13 @@ object ProcessUtil {
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             currentProcessName = getCurrentProcessNameByApplication()
-            return currentProcessName!!
+            if (!currentProcessName.isNullOrEmpty()) {
+                return currentProcessName
+            }
         }
         currentProcessName = getCurrentProcessNameByActivityThread()
         if (!currentProcessName.isNullOrEmpty()) {
-            return currentProcessName!!
+            return currentProcessName
         }
         currentProcessName = getCurrentProcessNameByActivityManager(context)
         return currentProcessName
