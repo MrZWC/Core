@@ -1,5 +1,6 @@
 package io.github.idonans.example.core;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,8 +19,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String processName = ProcessUtil.getCurrentProcessNameByActivityThread();
-                Log.i("mainactivity",processName);
+                String processName = ProcessUtil.getCurrentProcessName(MainActivity.this);
+                Log.i("mainactivity", processName);
+            }
+        });
+        findViewById(R.id.jump_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
     }
